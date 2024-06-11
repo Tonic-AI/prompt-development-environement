@@ -1,8 +1,8 @@
 {
-  "name": "gui",
-  "productName": "gui",
+  "name": "better-prompt",
+  "productName": "Better Prompt",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "An innovative platform for crafting, testing, and sharing AI prompts. PDE is where developers, researchers, and AI enthusiasts converge to push the boundaries of conversational AI.",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -27,7 +27,7 @@
   "keywords": [],
   "author": {
     "name": "p3n",
-    "email": "rawsonkara@gmail.com"
+    "email": "p3n@tonic-ai.com"
   },
   "license": "MIT",
   "dependencies": {
