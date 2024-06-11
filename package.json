@@ -1,0 +1,23 @@
+{
+  "name": "prompt-dev-env",
+  "version": "1.0.0",
+  "description": "An innovative platform for crafting, testing, and sharing AI prompts. PDE is where developers, researchers, and AI enthusiasts converge to push the boundaries of conversational AI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.tonic-ai.com/contribute/prompt-dev-env"
+  },
+  "keywords": [
+    "AI",
+    "Prompt",
+    "Engineering",
+    "Prompting",
+    "IDE",
+    "Development"
+  ],
+  "author": "p3n@tonic-ai.com",
+  "license": "MIT"
+}
