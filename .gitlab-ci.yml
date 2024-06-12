@@ -1,0 +1,31 @@
+image: node:14
+
+stages:
+  - build
+
+before_script:
+  - npm install
+
+build_windows:
+  stage: build
+  script:
+    - npm run dist -- --win
+  artifacts:
+    paths:
+      - dist/
+
+build_mac:
+  stage: build
+  script:
+    - npm run dist -- --mac
+  artifacts:
+    paths:
+      - dist/
+
+build_linux:
+  stage: build
+  script:
+    - npm run dist -- --linux
+  artifacts:
+    paths:
+      - dist/
