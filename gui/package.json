@@ -1,15 +1,14 @@
 {
-  "name": "better-prompt",
-  "productName": "Better Prompt",
+  "name": "prompt-dev-env",
+  "productName": "Prompt Development Environment",
   "version": "1.0.0",
-  "description": "An innovative platform for crafting, testing, and sharing AI prompts. PDE is where developers, researchers, and AI enthusiasts converge to push the boundaries of conversational AI.",
-  "main": ".vite/build/main.js",
+  "description": "An integrated prompt development environment.",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "publish": "electron-forge publish"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
@@ -19,10 +18,13 @@
     "@electron-forge/maker-zip": "^7.4.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
-    "@electron-forge/plugin-vite": "^7.4.0",
+    "@electron-forge/plugin-webpack": "^7.4.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "31.0.0",
-    "vite": "^5.0.12"
+    "@vercel/webpack-asset-relocator-loader": "1.7.3",
+    "css-loader": "^6.0.0",
+    "electron": "31.0.1",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.0.0"
   },
   "keywords": [],
   "author": {
@@ -31,6 +33,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "chalk": "^5.3.0",
+    "electron-is-dev": "^3.0.1",
+    "electron-log": "^5.1.5",
+    "electron-platform": "^1.2.0",
+    "electron-root-path": "^1.1.0",
     "electron-squirrel-startup": "^1.0.1"
   }
 }
