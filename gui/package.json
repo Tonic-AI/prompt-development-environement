@@ -1,6 +1,6 @@
 {
   "name": "prompt-dev-env",
-  "productName": "Prompt Development Environment",
+  "productName": "BetterPrompts",
   "version": "1.0.0",
   "description": "An integrated prompt development environment.",
   "main": ".webpack/main",
