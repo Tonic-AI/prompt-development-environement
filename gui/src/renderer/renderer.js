@@ -1,4 +1,4 @@
-// renderer.js
+// src/renderer/renderer.js
 import './index.css';
 import RendererEventSystem from './RendererEventSystem';
 

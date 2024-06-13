@@ -8,6 +8,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "prepublish":"echo WARN: : TODO: implement logic to mirror source code from gitlab onto github for distribution.",
     "publish": "electron-forge publish"
   },
   "devDependencies": {

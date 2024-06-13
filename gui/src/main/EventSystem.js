@@ -1,21 +1,22 @@
 // src/main/EventSystem.js
 const { ipcMain } = require('electron');
+const BaseSystem = require('./BaseSystem');
 
-class EventSystem {
+class EventSystem extends BaseSystem {
     constructor() {
-        console.log("[EVENT-SYSTEM] created");
+        super('EVENT-SYSTEM');
         this.initializeIpcListeners();
     }
 
     initializeIpcListeners() {
         ipcMain.on('renderer-event', (event, arg) => {
-            console.log('[EVENT-SYSTEM] Received message from renderer:', arg);
+            this.log('Received message from renderer: ' + arg);
             event.reply('main-event-response', 'Response from main process');
         });
     }
 
     test() {
-        console.log('[EVENT-SYSTEM] test function executed');
+        this.log('test function executed');
     }
 }
 
