@@ -1,18 +1,20 @@
 // src/renderer/RendererEventSystem.js
-export default class RendererEventSystem {
-  constructor() {
-    console.log("[R-EVENT-SYSTEM] created");
-    this.initializeIpcListeners();
-  }
+import RendererBaseSystem from './RendererBaseSystem';
 
-  initializeIpcListeners() {
-    window.api.receive('main-event-response', (data) => {
-      console.log('[R-EVENT-SYSTEM] Received response from main process:', data);
-    });
-  }
+export default class RendererEventSystem extends RendererBaseSystem {
+    constructor() {
+        super('R-EVENT-SYSTEM');
+        this.initializeIpcListeners();
+    }
 
-  test() {
-    console.log('[R-EVENT-SYSTEM] test function executed');
-    window.api.send('renderer-event', 'Hello to Better Prompts');
-  }
+    initializeIpcListeners() {
+        window.api.receive('main-event-response', (data) => {
+            this.log('Received response from main process: ' + data);
+        });
+    }
+
+    test() {
+        this.log('test function executed');
+        window.api.send('renderer-event', 'Hello to Better Prompts');
+    }
 }
