@@ -1,13 +1,13 @@
 // src/main/BaseComponent.js
 class BaseComponent {
     constructor() {
-        // Common properties of components can be initialized here
+        // Placeholder for common properties initialization
     }
 
-    // Common methods shared by all components
+    // Placeholder for common methods shared by all components
     initialize() {
-        // Initialization code common to all components
+        // Code to initialize components
     }
 }
 
-module.exports = BaseComponent;
+module.exports = BaseComponent; // Export BaseComponent for use in other parts of the application

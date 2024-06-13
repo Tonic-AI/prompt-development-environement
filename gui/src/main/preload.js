@@ -1,18 +1,20 @@
 // src/main/preload.js
 const { contextBridge, ipcRenderer } = require('electron');
 
+// Securely expose IPC functionality to the renderer process
 contextBridge.exposeInMainWorld('api', {
+  // Send message from renderer to main process
   send: (channel, data) => {
-    // whitelist channels to ensure security
-    let validChannels = ['renderer-event']; // Make sure to use the correct channel name
+    const validChannels = ['renderer-event']; // Channels allowed for sending
     if (validChannels.includes(channel)) {
-      ipcRenderer.send(channel, data);
+      ipcRenderer.send(channel, data); // Send if channel is valid
     }
   },
+  // Receive message from main to renderer process
   receive: (channel, func) => {
-    let validChannels = ['main-event-response']; // Make sure to use the correct channel name
+    const validChannels = ['main-event-response', 'main-event-renderer']; // Channels allowed for receiving
     if (validChannels.includes(channel)) {
-      // Deliberately strip event as it includes `sender`
+      // Set up listener, stripping out the event object to prevent exposure of `sender`
       ipcRenderer.on(channel, (event, ...args) => func(...args));
     }
   }
