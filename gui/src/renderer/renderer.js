@@ -1,3 +1,6 @@
+// renderer.js
 import './index.css';
+import RendererEventSystem from './RendererEventSystem';
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+let rEventSystem = new RendererEventSystem();
+rEventSystem.test();
