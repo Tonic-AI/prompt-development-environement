@@ -1,17 +1,17 @@
 // src/main/BaseSystem.js
 class BaseSystem {
     constructor(name) {
-        this.name = name;
-        console.log(`[${this.name}] System created`);
+        this.name = name; // Name of the system
+        console.log(`[${this.name}] New system created`); // Log system creation
     }
 
     initialize() {
-        // Initialization code common to all systems
+        // Placeholder for initialization code common to all derived systems
     }
 
     log(message) {
-        console.log(`[${this.name}] ${message}`);
+        console.log(`[${this.name}] ${message}`); // Log messages with system name prefix
     }
 }
 
-module.exports = BaseSystem;
+module.exports = BaseSystem; // Export BaseSystem for inheritance
