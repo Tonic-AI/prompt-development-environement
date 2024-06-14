@@ -14,11 +14,9 @@ class BaseSystem {
   
     initialize() {
         // Placeholder for initialization code common to all derived systems
-        // Placeholder for initialization code common to all derived systems
     }
 
     log(message) {
-        console.log(`[${this.name}] ${message}`); // Log messages with system name prefix
         console.log(`[${this.name}] ${message}`); // Log messages with system name prefix
     }
   }
