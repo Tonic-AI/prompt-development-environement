@@ -1,6 +1,5 @@
 // src/renderer/RendererBaseSystem.js
 // Base system class for renderer processes
-// Base system class for renderer processes
 export default class RendererBaseSystem {
     static instances = {};
 
@@ -21,9 +20,7 @@ export default class RendererBaseSystem {
     }
 
     // Log messages with system name
-    // Log messages with system name
     log(message) {
-        console.log(`[${this.name}] ${message}`); // Prefix log with system name
         console.log(`[${this.name}] ${message}`); // Prefix log with system name
     }
 }
