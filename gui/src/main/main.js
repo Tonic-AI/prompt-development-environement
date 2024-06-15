@@ -1,3 +1,4 @@
+// src/main/main.js @globals
 const { app, BrowserWindow } = require('electron');
 const EventSystem = require('./EventSystem');
 
@@ -6,7 +7,6 @@ if (require('electron-squirrel-startup')) app.quit();
 
 // Initialize event system and run test
 const eventSystem = new EventSystem();
-eventSystem.test();
 
 // Function to create the main window
 const createWindow = () => {
@@ -29,9 +29,9 @@ const createWindow = () => {
   // Once ready, show the window and dispatch an event
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
+    eventSystem.test();
   });
 
-  // Open DevTools for debugging
   mainWindow.webContents.openDevTools();
 };
 
