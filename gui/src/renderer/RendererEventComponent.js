@@ -1,12 +1,13 @@
 // src/renderer/RendererEventComponent.js
+import EventData from '../main/EventData';
 import RendererBaseComponent from './RendererBaseComponent';
 
 // Component for handling events in renderer process
 class RendererEventComponent extends RendererBaseComponent {
   constructor(type, data) {
-    super(); // Call base component constructor
-    this.setType(type); // Set event type
-    this.setData(data); // Set event data
+    super();
+    this.setType(type);
+    this.setData(data);
   }
 
   // Send event to main process
@@ -15,19 +16,20 @@ class RendererEventComponent extends RendererBaseComponent {
   }
 
   // Set up listener for events from main process
-  setupListenerFromMain(channel, callback) {
-    window.api.receive(channel, callback); // Use context bridge to listen for events
+  setupListenerFromMain(channel, func) {
+    window.api.receive(channel, func); // Use context bridge to listen for events
   }
 
   // Send event to self (within the same renderer process)
-  sendEventToRenderer(eventName, detail) {
-    const event = new CustomEvent(eventName, { detail });
-    window.dispatchEvent(event); // Dispatch the event
+  sendEventToRenderer(eventType, data) {
+    window.dispatchEvent(new CustomEvent(eventType, { detail: data }));
   }
 
   // Set up listener for events from self (within the same renderer process)
-  setupListenerFromRenderer(eventName, callback) {
-    window.addEventListener(eventName, (event) => callback(event.detail)); // Listen for the event
+  setupListenerFromRenderer(channel, func) {
+    window.addEventListener(channel, (event) => {
+      func(event.detail.data)
+    });
   }
 }
 

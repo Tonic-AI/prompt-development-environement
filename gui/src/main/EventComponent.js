@@ -1,39 +1,39 @@
 // src/main/EventComponent.js
 const { BrowserWindow, ipcMain } = require('electron');
 const BaseComponent = require('./BaseComponent');
+const ChannelNames = require('./ChannelNames');
+const EventData = require('./EventData');
 
 // EventComponent class extends BaseComponent to handle event dispatching
 class EventComponent extends BaseComponent {
-    constructor(eventEmitter) {
-        super(); // Call the constructor of the BaseComponent
-        this.eventEmitter = eventEmitter;
+    constructor(emitter, registry) {
+        super();
+        this.eventEmitter = emitter;
+        this.registry = registry;
     }
 
     // Send the event to all renderer processes
-    sendEventToRenderer(channel, data) {
-        // Retrieve all open BrowserWindow instances
+    sendEventToRenderer(eventType, data) {
         const windows = BrowserWindow.getAllWindows();
-
-        // Iterate over each window and send the event to its renderer process
         windows.forEach((win) => {
-            win.webContents.send(channel, data);
+            win.webContents.send(ChannelNames.MAIN_EVENT_RENDERER, EventData.serialize(eventType, data));
         });
     }
 
-    // Send the event over IPC for the renderer process
-    setupListenerFromRenderer(channel, callback) {
-        ipcMain.on(channel, callback);
+    // Send the event within the main process
+    sendEventToMain(eventType, data) {
+        this.eventEmitter.emit(ChannelNames.MAIN_EVENT, EventData.serialize(eventType, data));
     }
 
-    // Send the event within the main process
-    sendEventToMain(eventName, data) {
-        this.eventEmitter.emit(eventName, data); // Emit the event
+    // Send the event over IPC for the renderer process
+    setupListenerFromRenderer(callback) {
+        ipcMain.on(ChannelNames.RENDERER_EVENT, callback);
     }
 
     // Set up a listener for events within the main process
-    setupListenerFromMain(eventName, callback) {
-        this.eventEmitter.on(eventName, callback); // Set up the listener
+    setupListenerFromMain(callback) {
+        this.eventEmitter.on(ChannelNames.MAIN_EVENT, callback);
     }
 }
 
-module.exports = EventComponent; // Export EventComponent for use in other parts of the application
+module.exports = EventComponent;

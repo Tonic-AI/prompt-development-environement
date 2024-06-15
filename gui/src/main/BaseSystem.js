@@ -1,4 +1,5 @@
 // src/main/BaseSystem.js
+
 class BaseSystem {
     static instances = {};
   
@@ -22,3 +23,4 @@ class BaseSystem {
   }
 
   module.exports = BaseSystem; // Export BaseSystem for inheritance
+  

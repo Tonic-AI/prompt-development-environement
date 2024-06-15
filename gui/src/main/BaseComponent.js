@@ -1,4 +1,5 @@
 // src/main/BaseComponent.js
+
 class BaseComponent {
     constructor() {
         // Placeholder for common properties initialization
