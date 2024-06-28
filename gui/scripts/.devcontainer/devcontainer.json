@@ -1,0 +1,15 @@
+{  
+    "name": "Python 3",  
+    "build": {  
+        "dockerfile": "Dockerfile",  
+        "context": ".."  
+    },  
+    "runArgs": [  
+        "-u",  
+        "root"  
+    ],  
+    "settings": {   
+        "terminal.integrated.shell.linux": "/bin/bash"  
+    },  
+    "extensions": []  
+}  
