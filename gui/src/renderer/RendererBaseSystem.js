@@ -3,18 +3,17 @@
 export default class RendererBaseSystem {
     static instances = {};
 
-    constructor() {
-        const className = this.constructor.name;
-        this.name = className;
-        console.log(`[${this.name}] System created`); // Log system creation
+    constructor(name) {
+        this.name = name;
+        console.log(`[${this.name}] New System created`);
 
-        if (!RendererBaseSystem.instances[className]) {
-            RendererBaseSystem.instances[className] = this;
+        if (!RendererBaseSystem.instances[name]) {
+            RendererBaseSystem.instances[name] = this;
         }
-        return RendererBaseSystem.instances[className];
+        return RendererBaseSystem.instances[name];
     }
 
-    
+
     initialize() {
         // Placeholder for system initialization code here
     }

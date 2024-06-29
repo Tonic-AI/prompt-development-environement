@@ -1,7 +1,7 @@
 // src/renderer/renderer.js
-import './index.css'; // Import styles
-import RendererEventSystem from './RendererEventSystem'; // Import renderer event system
+import './index.css';
+import RendererEventSystem from './RendererEventSystem';
 
 // Create and test renderer event system
-let rEventSystem = new RendererEventSystem();
-rEventSystem.test(); // Execute test function
+let eventSystem = new RendererEventSystem();
+eventSystem.test();
