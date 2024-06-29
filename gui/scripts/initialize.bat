@@ -22,9 +22,6 @@ if %INSTALLATION_ERROR% NEQ 0 goto :eof
 call :setup_virtual_environment
 if %INSTALLATION_ERROR% NEQ 0 goto :eof
 
-call :upgrade_pip
-if %INSTALLATION_ERROR% NEQ 0 goto :eof
-
 call :install_poetry
 if %INSTALLATION_ERROR% NEQ 0 goto :eof
 
@@ -51,7 +48,7 @@ exit /b 0
 :install_python
 echo Installing Python %REQUIRED_PYTHON_VERSION%...
 set "PYTHON_INSTALL_DIR=%USERPROFILE%\.betterprompts\python"
-echo Installation directory: %PYTHON_INSTALL_DIR%
+echo Installation directory: "%PYTHON_INSTALL_DIR%"
 if not exist "%PYTHON_INSTALL_DIR%" (
     mkdir "%PYTHON_INSTALL_DIR%"
 )
@@ -75,17 +72,6 @@ if %ERRORLEVEL% NEQ 0 (
 )
 echo Verification successful. Python is callable from the installation directory.
 exit /b 0
-
-:: Subroutine for upgrading pip
-:upgrade_pip
-echo Upgrading pip to the latest version...
-"%PYTHON_INSTALL_DIR%\python.exe" -m pip install --upgrade pip
-if %ERRORLEVEL% NEQ 0 (
-    echo Failed to upgrade pip. Please check your Python installation and try again.
-    exit /b 1
-)
-echo pip has been upgraded to the latest version.
-goto :eof
 
 :: Subroutine for creating directories
 :create_directories

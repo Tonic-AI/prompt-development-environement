@@ -1,26 +1,25 @@
 // src/main/BaseSystem.js
+const log = require('electron-log');
 
 class BaseSystem {
-    static instances = {};
-  
-    constructor() {
-      const className = this.constructor.name;
-      this.name = className;
-      console.log(`[${className}] New system created`); // Log system creation
-      if (!BaseSystem.instances[className]) {
-        BaseSystem.instances[className] = this;
-      }
-      return BaseSystem.instances[className];
-    }
-  
-    initialize() {
-        // Placeholder for initialization code common to all derived systems
-    }
+	static instances = {};
 
-    log(message) {
-        console.log(`[${this.name}] ${message}`); // Log messages with system name prefix
-    }
-  }
+	constructor(name) {
+		this.name = name;
+		log.info(`[${name}] New system created`);
+		if (!BaseSystem.instances[name]) {
+			BaseSystem.instances[name] = this;
+		}
+		return BaseSystem.instances[name];
+	}
 
-  module.exports = BaseSystem; // Export BaseSystem for inheritance
-  
+	initialize() {
+		// Placeholder for initialization code common to all derived systems
+	}
+
+	log(message) {
+		log.info(`[${this.name}] ${message}`); // Log messages with system name prefix using electron-log
+	}
+}
+
+module.exports = BaseSystem; // Export BaseSystem for inheritance

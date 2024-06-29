@@ -1,6 +1,6 @@
 {
-  "name": "prompt-dev-env",
-  "productName": "BetterPrompts",
+  "name": "BetterPrompts",
+  "productName": "Better Prompts",
   "version": "1.0.0",
   "description": "An integrated prompt development environment.",
   "main": ".webpack/main",
@@ -8,8 +8,9 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "prepublish":"echo WARN: : TODO: implement logic to mirror source code from gitlab onto github for distribution.",
-    "publish": "electron-forge publish"
+    "prepublish": "echo WARN: : TODO: implement logic to mirror source code from gitlab onto github for distribution.",
+    "publish": "electron-forge publish",
+    "clean": "rimraf ./out ./.webpack ./node_modules"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
@@ -25,17 +26,17 @@
     "css-loader": "^6.0.0",
     "electron": "31.0.1",
     "node-loader": "^2.0.0",
+    "rimraf": "^5.0.7",
     "style-loader": "^3.0.0"
   },
   "keywords": [],
   "author": {
-    "name": "p3n",
-    "email": "p3n@tonic-ai.com"
+    "name": "Tonic Team",
+    "email": "team@tonic-ai.com"
   },
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
-    "electron-is-dev": "^3.0.1",
     "electron-log": "^5.1.5",
     "electron-platform": "^1.2.0",
     "electron-root-path": "^1.1.0",
